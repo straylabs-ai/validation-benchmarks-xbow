@@ -1,3 +1,8 @@
+// Polyfill: enabled@2.0.0 (winston dependency) references browser-only `location`
+if (typeof location === 'undefined') {
+  global.location = { search: '' };
+}
+
 const S3rver = require("s3rver");
 
 const S3 = new S3rver({

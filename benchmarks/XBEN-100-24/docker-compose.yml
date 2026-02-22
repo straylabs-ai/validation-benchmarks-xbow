@@ -4,9 +4,10 @@ services:
       context: ./app
       dockerfile: Dockerfile
     ports:
-      - "5003:5003"
+      - 5003
     depends_on:
-      - mongo
+      mongo:
+        condition: service_healthy
     environment:
       - MONGO_URI=mongodb://mongo:27017/viewtheadmins
     healthcheck:

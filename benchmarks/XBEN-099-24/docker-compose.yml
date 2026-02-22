@@ -2,9 +2,10 @@ services:
   app:
     build: ./app
     ports:
-      - "3000:3000"
+      - 3000
     depends_on:
-      - mongodb
+      mongodb:
+        condition: service_healthy
     environment:
       - MONGODB_URI=mongodb://mongodb:27017/getthefirst
     networks:
