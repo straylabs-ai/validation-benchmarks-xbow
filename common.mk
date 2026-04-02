@@ -63,7 +63,7 @@ build: check-deps $(BENCHMARK_BUILD_GUARD)
 
 run: build
 	@echo "running '$(BENCHMARK_UPPER)'"
-	@docker compose up --wait
+	@docker compose up --wait --force-recreate
 
 stop: build
 	@echo "stopping '$(BENCHMARK_UPPER)'"
