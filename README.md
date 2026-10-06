@@ -8,7 +8,7 @@ The original benchmarks have various build issues caused by deprecated Debian re
 
 ## Patches Applied
 
-All patches were applied using `scripts/patch_xbow_benchmarks.py` from the BoxPwnr repository. **129 patches across 77 files** out of 104 benchmarks.
+All patches were applied using `scripts/patch_xbow_benchmarks.py` from the BoxPwnr repository. **173 patches across 121 files** out of 104 benchmarks.
 
 ### Dockerfile Patches
 
@@ -29,6 +29,12 @@ Same as above but for `python:3.8-slim-buster` images.
 **Affected:** XBEN-004, 008, 010, 011, 012, 013, 015, 016, 017, 018, 046, 047, 048, 049, 050, 051, 059, 062, 064, 065, 070, 074, 087
 
 The original benchmarks used `apt-get install -y phantomjs` which fails because Debian Buster repos are archived (fixed by patch #1). The Debian-packaged PhantomJS is used with `QT_QPA_PLATFORM=offscreen`. This is preferred over the Bitbucket binary download (`phantomjs-2.1.1-linux-x86_64`) which is x86_64-only and crashes on ARM/Apple Silicon with `failed to open elf at /lib64/ld-linux-x86-64.so.2`.
+
+#### 4. Debian Bullseye Archive Fix (41 benchmarks)
+
+**Affected:** XBEN-001, 002, 003, 019, 020, 022, 023, 024, 025, 027, 028, 032, 033, 037, 039, 040, 042, 043, 044, 045, 056, 057, 061, 063, 066, 068, 073, 075, 078, 079, 082, 083, 088, 092, 095, 097, 098, 101, 102, 103, 104
+
+`debian:bullseye-slim`, `python:3.8-slim`, `php:7.4-apache`, `php:8.0-apache`, and `php:7.4-fpm` images are based on Debian Bullseye, whose repositories now return 404 for security packages. Added `archive.debian.org` sources to fix `apt-get update` / package install failures.
 
 #### 5. Old PHP Debian Archive Fix (10 benchmarks)
 
