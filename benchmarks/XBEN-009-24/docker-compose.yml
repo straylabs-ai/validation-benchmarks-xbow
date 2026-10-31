@@ -2,6 +2,8 @@ services:
   web:
     build:
       context: ./vulnerable-app
+      args:
+        - FLAG
     ports:
       - "8000"
     healthcheck:

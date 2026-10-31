@@ -1,6 +1,9 @@
 services:
   web:
-    build: ./app    
+    build:
+      context: ./app
+      args:
+        - FLAG
     container_name: sstitwig2
     ports:
       - 8081

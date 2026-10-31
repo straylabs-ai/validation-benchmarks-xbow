@@ -1,6 +1,9 @@
 services:
   struts-app:
-    build: ./web
+    build:
+      context: ./web
+      args:
+        - FLAG
     ports:
       - "8080"
     environment:

@@ -1,6 +1,9 @@
 services:
   ssrf-demo-app:
-    build: ./ssrf-demo-app
+    build:
+      context: ./ssrf-demo-app
+      args:
+        - FLAG
     ports:
       - "80"
     networks:

@@ -3,6 +3,8 @@ services:
     build:
       context: ./app
       dockerfile: Dockerfile 
+      args:
+        - FLAG
     ports:
       - 4567
     healthcheck:
